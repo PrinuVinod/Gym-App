@@ -22,13 +22,45 @@ app.use(bodyParser.urlencoded({
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Route to display gym members
 app.get('/', async (req, res) => {
   try {
     const members = await Member.find();
     res.render('index', {
       members
     });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+app.get('/addmember', (req, res) => {
+  res.render('addmember');
+});
+
+app.post('/addmember', async (req, res) => {
+  try {
+    const {
+      name,
+      phone,
+      lastpayment,
+      age
+    } = req.body;
+
+    // Calculate next fee due date (1 month after last payment date)
+    const lastPaymentDate = new Date(lastpayment);
+    const nextFeeDueDate = new Date(lastPaymentDate.setMonth(lastPaymentDate.getMonth() + 1));
+
+    const newMember = new Member({
+      name,
+      phone,
+      lastpayment: new Date(lastpayment),
+      due: nextFeeDueDate,
+      age
+    });
+
+    await newMember.save();
+    res.redirect('/');
   } catch (err) {
     console.error(err);
     res.status(500).send('Internal Server Error');

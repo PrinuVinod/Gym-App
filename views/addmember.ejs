@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Member</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+</head>
+
+<body>
+    <h1>Add New Member</h1>
+    <div class="container">
+        <form action="/addmember" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone" required>
+
+            <label for="lastpayment">Last Payment Date:</label>
+            <input type="date" id="lastpayment" name="lastpayment" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <button type="submit" class="btn">Add Member</button>
+        </form>
+        <a href="/" class="btn btn-back">Back to Members List</a>
+    </div>
+</body>
+
+</html>

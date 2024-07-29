@@ -8,25 +8,28 @@
 </head>
 <body>
     <h1>Gym Members</h1>
-    <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Last Payment</th>
-                    <th>Next Fee Due</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% members.forEach(member => { %>
+    <div class="container">
+        <div class="table-wrapper">
+            <table>
+                <thead>
                     <tr>
-                        <td><%= member.name %></td>
-                        <td><%= member.lastpayment ? new Date(member.lastpayment).toDateString() : 'N/A' %></td>
-                        <td><%= member.due ? new Date(member.due).toDateString() : 'N/A' %></td>
+                        <th>Name</th>
+                        <th>Last Payment</th>
+                        <th>Next Fee Due</th>
                     </tr>
-                <% }) %>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <% members.forEach(member => { %>
+                        <tr>
+                            <td><%= member.name %></td>
+                            <td><%= member.lastpayment.toDateString() %></td>
+                            <td><%= member.due.toDateString() %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+        <a href="/addmember" class="btn">Add New Member</a>
     </div>
 </body>
 </html>

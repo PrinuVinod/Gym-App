@@ -5,6 +5,7 @@ const memberSchema = new mongoose.Schema({
     phone: Number,
     lastpayment: Date,
     due: Date,
+    age: Number,
 });
 
 const Member = mongoose.model('Member', memberSchema);
