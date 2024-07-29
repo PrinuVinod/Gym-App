@@ -24,9 +24,28 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.get('/', async (req, res) => {
   try {
-    const members = await Member.find();
+    const searchQuery = req.query.search || '';
+    let members;
+
+    if (searchQuery) {
+      // Search for members by name or phone number
+      members = await Member.find({
+        $or: [{
+            name: new RegExp(searchQuery, 'i')
+          },
+          {
+            phone: new RegExp(searchQuery, 'i')
+          }
+        ]
+      });
+    } else {
+      // If no search query, return all members
+      members = await Member.find();
+    }
+
     res.render('index', {
-      members
+      members,
+      searchQuery
     });
   } catch (err) {
     console.error(err);
