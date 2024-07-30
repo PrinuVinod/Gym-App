@@ -22,6 +22,18 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.get('/', async (req, res) => {
   try {
+    const members = await Member.find();
+    res.render('index', {
+      members
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+  }
+})
+
+app.get('/members', async (req, res) => {
+  try {
     const searchQuery = req.query.search || '';
     let members;
 
@@ -39,7 +51,7 @@ app.get('/', async (req, res) => {
       members = await Member.find();
     }
 
-    res.render('index', {
+    res.render('members', {
       members,
       searchQuery
     });
