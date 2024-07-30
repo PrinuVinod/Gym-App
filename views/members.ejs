@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K.G.F Members</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+    <h1>K.G.F Members</h1>
+    <div class="container">
+        <form action="/" method="get" class="search-form">
+            <input type="text" name="search" placeholder="Search by name or phone number..." value="<%= searchQuery %>">
+            <button type="submit" class="btn">Search</button>
+        </form>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Last Payment</th>
+                        <th>Next Fee Due</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (members.length > 0) { %>
+                        <% members.forEach(member => { %>
+                            <tr>
+                                <td><%= member.name %></td>
+                                <td><%= member.phone %></td>
+                                <td><%= member.lastpayment.toDateString() %></td>
+                                <td><%= member.due.toDateString() %></td>
+                            </tr>
+                        <% }) %>
+                    <% } else { %>
+                        <tr>
+                            <td colspan="3">No members found.</td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+        <a href="/addmember" class="btn">Add New Member</a>
+    </div>
+</body>
+</html>
