@@ -1,0 +1,83 @@
+/* General Styles for Login Page */
+body {
+    font-family: 'Muli', sans-serif;
+    background-color: #111;
+    /* Slightly lighter than black for contrast */
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 40%;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #222;
+    /* Dark background for container */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    /* Shadow for better visibility */
+    margin-top: 100px;
+    /* Center vertically */
+}
+
+h1 {
+    text-align: center;
+    color: #f36100;
+    margin-bottom: 20px;
+    font-family: 'Oswald', sans-serif;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 10px 0 5px;
+    color: #a9a9a9;
+    font-family: 'Oswald', sans-serif;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 10px;
+    border: 1px solid #a9a9a9;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    background-color: #333;
+    /* Darker input background */
+    color: white;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #f36100;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #d74e00;
+}
+
+.btn-back {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    background-color: #333;
+    border: 1px solid #a9a9a9;
+    padding: 10px;
+    text-decoration: none;
+    color: #f36100;
+    border-radius: 4px;
+}
+
+.btn-back:hover {
+    background-color: #555;
+    color: white;
+}
