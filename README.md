@@ -2,5 +2,5 @@
 This is a App made for KGF Gym.
 
 ```
-npm install express mongoose body-parser ejs dotenv
+npm install express mongoose body-parser ejs dotenv bcrypt express-session moment
 ```
