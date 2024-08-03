@@ -6,8 +6,13 @@ const memberSchema = new mongoose.Schema({
         type: String,
         unique: true
     },
+    password: {
+        type: String,
+        required: true
+    },
     lastpayment: Date,
-    due: Date
+    due: Date,
+    age: Number,
 });
 
 module.exports = mongoose.model('Members', memberSchema);

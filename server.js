@@ -98,7 +98,8 @@ app.post('/addmember', isAuthenticated, async (req, res) => {
     const {
       name,
       phone,
-      lastpayment
+      lastpayment,
+      age
     } = req.body;
 
     const lastPaymentDate = new Date(lastpayment);
@@ -107,6 +108,8 @@ app.post('/addmember', isAuthenticated, async (req, res) => {
     const newMember = new Members({
       name,
       phone,
+      password: phone,
+      age,
       lastpayment: new Date(lastpayment),
       due: nextFeeDueDate,
     });
