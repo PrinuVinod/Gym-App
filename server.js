@@ -205,6 +205,8 @@ app.post('/addmember', isAuthenticated, async (req, res) => {
       age,
       lastpayment: new Date(lastpayment),
       due: nextFeeDueDate,
+      status: true,
+      activity: true
     });
 
     await newMember.save();
