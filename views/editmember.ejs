@@ -146,20 +146,31 @@
                         <div class="col-lg-12">
                             <h2 style="color: #f36100; margin-bottom: 20px;">Edit Member Details</h2>
                             <form action="/updatemember/<%= member._id %>" method="post">
-                                <input type="text" name="name" value="<%= member.name %>" placeholder="Name"
-                                    required><br><br>
-                                <input type="text" name="phone" value="<%= member.phone %>" placeholder="Phone"
-                                    required><br><br>
-                                <input type="date" name="lastpayment"
-                                    value="<%= member.lastpayment.toISOString().split('T')[0] %>" required><br><br>
-                                <button class="subbut" style="border-radius: 10px;"
-                                    onclick="window.location.href='/members'">Back</button>
+                                <input type="text" name="name" value="<%= member.name %>" placeholder="Name" required><br><br>
+                                <input type="text" name="phone" value="<%= member.phone %>" placeholder="Phone" required><br><br>
+                                <input type="date" name="lastpayment" value="<%= member.lastpayment.toISOString().split('T')[0] %>" required><br><br>
+                                <button class="subbut" style="border-radius: 10px;" onclick="window.location.href='/members'">Back</button>
                                 <button type="submit" class="subbut" style="border-radius: 10px;">Update</button>
                             </form>
-                            <form action="/deletemember/<%= member._id %>" method="post" style="display: inline;">
-                                <button type="submit" class="delbut"
-                                    style="border-radius: 10px;">Delete</button>
+                            
+                            <p style="margin-top: 20px; color: white;">Curent Payment Status : <%= member.status ? 'Paid' : 'Not Paid' %></p>
+                            <form action="/updatestatus/<%= member._id %>" method="post" style="display: inline;">
+                                <button type="submit" class="subbut" style="border-radius: 10px;">
+                                    <%= member.status ? 'Mark as Not Paid' : 'Mark as Paid' %>
+                                </button>
                             </form>
+                            
+                            <p style="margin-top: 20px; color: white;">Curent Activity Status : <%= member.activity ? 'Active' : 'Inactive' %></p>
+                            <form action="/updateactivity/<%= member._id %>" method="post" style="display: inline;">
+                                <button type="submit" class="subbut" style="border-radius: 10px;">
+                                    <%= member.activity ? 'Deactivate Activity' : 'Activate Activity' %>
+                                </button>
+                            </form><br>
+                            
+                            <form action="/deletemember/<%= member._id %>" method="post" style="display: inline;">
+                                <button type="submit" class="delbut" style="border-radius: 10px;">Delete</button>
+                            </form>
+
                         </div>
                     </div>
                 </div>
