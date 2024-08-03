@@ -224,6 +224,7 @@
                                         <th style="color: #f36100; background-color: #fff; border-color: black;">Activity</th>
                                         <th style="color: #f36100; background-color: #fff; border-color: black;">Name</th>
                                         <th style="color: #f36100; background-color: #fff; border-color: black;">Phone</th>
+                                        <th style="color: #f36100; background-color: #fff; border-color: black;">Membership Start</th>
                                         <th style="color: #f36100; background-color: #fff; border-color: black;">Membership End</th>
                                         <th style="color: #f36100; background-color: #fff; border-color: black;">Status</th>
                                         <th style="color: #f36100; background-color: #fff; border-color: black;">Edits</th>
@@ -236,6 +237,7 @@
                                                 <td><i class="fa <%= member.activity ? 'circle green' : 'circle red' %>"></i></td>
                                                 <td><%= member.name %></td>
                                                 <td><%= member.phone %></td>
+                                                <td><%= member.due ? new Date(member.lastpayment).toDateString() : 'N/A' %></td>
                                                 <td><%= member.due ? new Date(member.due).toDateString() : 'N/A' %></td>
                                                 <td>
                                                     <i class="circle <%= member.status ? 'green' : 'red' %>"></i>

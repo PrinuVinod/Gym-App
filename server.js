@@ -61,6 +61,24 @@ app.get('/members', isAuthenticated, async (req, res) => {
   try {
     const searchQuery = req.query.search || '';
     console.log('Search Query:', searchQuery);
+
+    // Get today's date
+    const today = new Date();
+
+    // Update member status where due date has passed
+    await Member.updateMany({
+        due: {
+          $lte: today
+        },
+        status: true
+      }, // Find members where due date is less than or equal to today and status is true
+      {
+        $set: {
+          status: false
+        }
+      } // Update status to false
+    );
+
     let members;
 
     if (searchQuery) {
@@ -73,7 +91,7 @@ app.get('/members', isAuthenticated, async (req, res) => {
           }
         ]
       }).sort({
-        name: -1
+        name: 1
       });
       console.log('Members Found:', members);
     } else {
@@ -120,15 +138,41 @@ app.post('/updatemember/:id', async (req, res) => {
   }
 });
 
+const moment = require('moment'); // Add moment.js for date manipulation
+
 app.post('/updatestatus/:id', async (req, res) => {
   const memberId = req.params.id;
-  const member = await Member.findById(memberId);
-  const newStatus = !member.status;
-  await Member.findByIdAndUpdate(memberId, {
-    status: newStatus
-  });
-  res.redirect('/members');
+
+  try {
+    // Find the member by ID
+    const member = await Member.findById(memberId);
+
+    // Check if member exists
+    if (!member) {
+      return res.status(404).send('Member not found');
+    }
+
+    // Toggle status
+    const newStatus = !member.status;
+
+    // Update last payment date and due date
+    const newLastPayment = new Date(); // Set to current date
+    const newDueDate = moment(newLastPayment).add(1, 'months').toDate(); // Add one month
+
+    // Update member with new status, last payment date, and due date
+    await Member.findByIdAndUpdate(memberId, {
+      status: newStatus,
+      lastpayment: newLastPayment,
+      due: newDueDate
+    });
+
+    res.redirect('/members');
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+  }
 });
+
 
 app.post('/updateactivity/:id', async (req, res) => {
   const memberId = req.params.id;
