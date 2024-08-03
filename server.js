@@ -35,6 +35,13 @@ const isAuthenticated = (req, res, next) => {
   if (req.session.user) {
     return next();
   }
+  res.redirect('/ownerlogin');
+};
+
+const isAuthenticated1 = (req, res, next) => {
+  if (req.session.user) {
+    return next();
+  }
   res.redirect('/login');
 };
 
@@ -111,24 +118,24 @@ app.post('/addmember', isAuthenticated, async (req, res) => {
   }
 });
 
-app.get('/login', (req, res) => {
-  res.render('login');
+app.get('/ownerlogin', (req, res) => {
+  res.render('owner');
 });
 
-app.post('/login', async (req, res) => {
+app.post('/ownerlogin', async (req, res) => {
   const {
-    username,
+    phone,
     password
   } = req.body;
   try {
-    console.log(`Login attempt for username: ${username}`);
+    console.log(`Login attempt for phone: ${phone}`);
     const user = await User.findOne({
-      username
+      phone
     });
 
     if (!user) {
       console.log('User not found');
-      return res.status(401).send('Invalid username or password');
+      return res.status(401).send('Invalid phone number or password');
     }
 
     if (user.password === password) {
@@ -137,7 +144,7 @@ app.post('/login', async (req, res) => {
       res.redirect('/members');
     } else {
       console.log('Password does not match');
-      res.status(401).send('Invalid username or password');
+      res.status(401).send('Invalid phone number or password');
     }
   } catch (err) {
     console.error('Error:', err);
