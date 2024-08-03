@@ -72,10 +72,14 @@ app.get('/members', isAuthenticated, async (req, res) => {
             phone: new RegExp(searchQuery, 'i')
           }
         ]
+      }).sort({
+        name: -1
       });
       console.log('Members Found:', members);
     } else {
-      members = await Member.find();
+      members = await Member.find().sort({
+        name: 1
+      });
     }
 
     res.render('members', {

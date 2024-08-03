@@ -236,7 +236,7 @@
                                                 <td><i class="fa <%= member.activity ? 'circle green' : 'circle red' %>"></i></td>
                                                 <td><%= member.name %></td>
                                                 <td><%= member.phone %></td>
-                                                <td><%= member.due.toDateString() %></td>
+                                                <td><%= member.due ? new Date(member.due).toDateString() : 'N/A' %></td>
                                                 <td>
                                                     <i class="circle <%= member.status ? 'green' : 'red' %>"></i>
                                                     <%= member.status ? 'Paid' : 'Not Paid' %>
@@ -246,7 +246,7 @@
                                         <% }) %>
                                     <% } else { %>
                                         <tr>
-                                            <td colspan="5">No members found.</td>
+                                            <td colspan="6">No members found.</td>
                                         </tr>
                                     <% } %>
                                 </tbody>
