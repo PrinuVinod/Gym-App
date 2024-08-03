@@ -280,6 +280,53 @@ app.post('/memberlogin', async (req, res) => {
   }
 });
 
+app.get('/ownerprofile', isAuthenticated, async (req, res) => {
+  try {
+    const user = req.session.user;
+    const searchQuery = req.query.search || '';
+
+    if (!user) {
+      return res.redirect('/owner');
+    }
+
+    res.render('ownerprofile', {
+      user,
+      searchQuery
+    });
+  } catch (err) {
+    console.error('Error:', err);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+app.get('/editowner/:id', isAuthenticated, async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      return res.status(404).send('User not found');
+    }
+    res.render('editowners', {
+      user
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+app.post('/updateowner/:id', async (req, res) => {
+  const userId = req.params.id;
+  const updatedData = req.body;
+
+  try {
+    await User.findByIdAndUpdate(userId, updatedData);
+    res.redirect('/ownerprofile');
+  } catch (error) {
+    console.error('Error updating member:', error);
+    res.status(500).send('Server Error');
+  }
+});
+
 app.get('/logout', (req, res) => {
   req.session.destroy(err => {
     if (err) {
