@@ -121,10 +121,16 @@
                             <%= member.age %>
                         </p>
                         <p><strong>Last Paid On :</strong>
-                            <%= member.lastpayment %>
+                            <script>
+                                var lastPayment = new Date('<%= member.lastpayment %>');
+                                document.write(lastPayment.toDateString());
+                            </script>
                         </p>
                         <p><strong>Due On :</strong>
-                            <%= member.due %>
+                            <script>
+                                var dueDate = new Date('<%= member.due %>');
+                                document.write(dueDate.toDateString());
+                            </script>
                         </p>
                     </div>
                 </div>

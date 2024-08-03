@@ -88,6 +88,47 @@ app.get('/members', isAuthenticated, async (req, res) => {
   }
 });
 
+app.get('/editmember/:id', isAuthenticated, async (req, res) => {
+  try {
+    const member = await Member.findById(req.params.id);
+    if (!member) {
+      return res.status(404).send('Member not found');
+    }
+    res.render('editmember', {
+      member
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+// Update Route
+app.post('/updatemember/:id', async (req, res) => {
+  const memberId = req.params.id;
+  const updatedData = req.body;
+
+  try {
+    await Member.findByIdAndUpdate(memberId, updatedData);
+    res.redirect('/members');
+  } catch (error) {
+    console.error('Error updating member:', error);
+    res.status(500).send('Server Error');
+  }
+});
+
+// Delete Route
+app.post('/deletemember/:id', async (req, res) => {
+  const memberId = req.params.id;
+
+  try {
+    await Member.findByIdAndDelete(memberId);
+    res.redirect('/members');
+  } catch (error) {
+    console.error('Error deleting member:', error);
+    res.status(500).send('Server Error');
+  }
+});
 
 app.get('/addmember', isAuthenticated, (req, res) => {
   res.render('addmember');

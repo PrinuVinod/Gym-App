@@ -7,7 +7,7 @@
     <meta name="keywords" content="K.G.F, Gym">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>K.G.F | Members List</title>
+    <title>K.G.F | Owner Login</title>
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/bootstrap.min.css" type="text/css">
@@ -23,101 +23,56 @@
         body {
             background-color: black;
         }
-    
-        .profile-section {
-            margin-top: 50px;
+
+        .subbut {
+            background-color: #f36100;
+            color: white;
+            border: none;
+            padding: 10px 20px;
             text-align: center;
-        }
-    
-        .section-title span {
-            display: block;
-            font-size: 20px;
-            color: #f36100;
-        }
-    
-        .section-title h2 {
-            font-size: 36px;
-            color: #ffffff;
-            margin-bottom: 20px;
-        }
-    
-        .profile-info .search-form {
-            margin-bottom: 30px;
-        }
-    
-        .profile-info .search-form input[type="text"] {
-            width: 60%;
-            padding: 10px;
-            margin-right: 10px;
-            border: 1px solid #ffffff;
-            border-radius: 5px;
-            background-color: #2c2c2c;
-            color: #ffffff;
-        }
-    
-        .profile-info .search-form button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            background-color: #f36100;
-            color: #ffffff;
-            cursor: pointer;
-        }
-    
-        .profile-info .table-wrapper {
-            overflow-x: auto;
-            margin-top: 20px;
-        }
-    
-        .profile-info table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-    
-        .profile-info th,
-        .profile-info td {
-            padding: 15px;
-            border: 1px solid #ffffff;
-            color: #ffffff;
-        }
-    
-        .profile-info th {
-            background-color: #3a3a3a;
-        }
-    
-        .profile-info td {
-            background-color: #2c2c2c;
-        }
-    
-        .profile-info .btn {
-            margin-top: 20px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            background-color: #f36100;
-            color: #ffffff;
-            cursor: pointer;
             text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
         }
-    
-        .profile-info .btn:hover {
+
+        .subbut:hover {
             background-color: white;
             color: #f36100;
         }
-    
-        .canvas-social a {
-            color: #ffffff;
-            margin-right: 10px;
+
+        .abut {
+            color: white;
         }
-    </style>    
+
+        .abut:hover {
+            background-color: white;
+            color: #f36100;
+        }
+
+        .delbut {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .delbut:hover {
+            background-color: white;
+            color: red;
+            text-decoration: solid;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Page Preloader -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
-
     <!-- Offcanvas Menu Section Begin -->
     <div class="offcanvas-menu-overlay"></div>
     <div class="offcanvas-menu-wrapper">
@@ -130,7 +85,7 @@
         <nav class="canvas-menu mobile-menu">
             <ul>
                 <li><a href="/">Home</a></li>
-                <li class="active"><a href="/logout">Logout</a></li>
+                <li class="active"><a href="/selectuser">Logout?</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -156,7 +111,7 @@
                     <nav class="nav-menu">
                         <ul>
                             <li><a href="/">Home</a></li>
-                            <li class="active"><a href="/logout">Logout</a></li>
+                            <li class="active"><a href="/selectuser">Logout</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -182,61 +137,36 @@
     </header>
     <!-- Header End -->
 
-    <!-- ChoseUs Section Begin -->
+    <!-- Profile Section Begin -->
     <section class="profile-section spad" style="margin-top: 50px; text-align: center;">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <span>K.G.F Members</span>
-                        <!-- <h2>Welcome to Your Profile</h2> -->
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="profile-info">
-                        <form action="/members" method="get" class="search-form">
-                            <input type="text" name="search" placeholder="Search by name or phone number..." value="<%= searchQuery %>">
-                            <button type="submit" class="btn" style="margin: 0;">Search</button>
-                        </form>
-                        <div class="table-wrapper">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th style="color: #f36100; background-color: #fff; border-color: black;">Name</th>
-                                        <th style="color: #f36100; background-color: #fff; border-color: black;">Phone</th>
-                                        <th style="color: #f36100; background-color: #fff; border-color: black;">Last Payment</th>
-                                        <th style="color: #f36100; background-color: #fff; border-color: black;">Next Fee Due</th>
-                                        <th style="color: #f36100; background-color: #fff; border-color: black;">Edits</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <% if (members.length > 0) { %>
-                                        <% members.forEach(member => { %>
-                                            <tr>
-                                                <td><%= member.name %></td>
-                                                <td><%= member.phone %></td>
-                                                <td><%= member.lastpayment.toDateString() %></td>
-                                                <td><%= member.due.toDateString() %></td>
-                                                <td><a href="/editmember/<%= member._id %>" class="btn">Edit</a></td>
-                                            </tr>
-                                        <% }) %>
-                                    <% } else { %>
-                                        <tr>
-                                            <td colspan="5">No members found.</td>
-                                        </tr>
-                                    <% } %>
-                                </tbody>
-                            </table>
-                            <a href="/addmember" class="btn">Add New Member</a>
+            <section class="edit-form">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h2 style="color: #f36100; margin-bottom: 20px;">Edit Member Details</h2>
+                            <form action="/updatemember/<%= member._id %>" method="post">
+                                <input type="text" name="name" value="<%= member.name %>" placeholder="Name"
+                                    required><br><br>
+                                <input type="text" name="phone" value="<%= member.phone %>" placeholder="Phone"
+                                    required><br><br>
+                                <input type="date" name="lastpayment"
+                                    value="<%= member.lastpayment.toISOString().split('T')[0] %>" required><br><br>
+                                <button class="subbut" style="border-radius: 10px;"
+                                    onclick="window.location.href='/members'">Back</button>
+                                <button type="submit" class="subbut" style="border-radius: 10px;">Update</button>
+                            </form>
+                            <form action="/deletemember/<%= member._id %>" method="post" style="display: inline;">
+                                <button type="submit" class="delbut"
+                                    style="border-radius: 10px;">Delete</button>
+                            </form>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
     </section>
-    <!-- ChoseUs Section End -->
+    <!-- Profile Section End -->
 
     <!-- Footer Section Begin -->
     <footer class="footer-section" id="contact">
@@ -248,13 +178,13 @@
                             <a href="#"><img src="/img/logo.png" alt=""></a>
                         </div>
                         <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore
-                            dolore magna aliqua endisse ultrices gravida lorem.</p> -->
+                                labore
+                                dolore magna aliqua endisse ultrices gravida lorem.</p> -->
                         <div class="fa-social">
                             <!-- <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-youtube-play"></i></a>
-                            <a href="https://www.instagram.com/kgf.the_oasis_patharam/"><i class="fa fa-instagram"></i></a>-->
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-youtube-play"></i></a>
+                                <a href="https://www.instagram.com/kgf.the_oasis_patharam/"><i class="fa fa-instagram"></i></a>-->
                         </div>
                     </div>
                 </div>
@@ -269,11 +199,11 @@
                             </div>
                         </a>
                         <!-- <ul>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Classes</a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul> -->
+                                <li><a href="#">About</a></li>
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">Classes</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul> -->
                     </div>
                 </div>
                 <div class="col-lg-3">
@@ -287,11 +217,11 @@
                             </ul>
                         </div>
                         <!-- <ul>
-                            <li><a href="#">Login</a></li>
-                            <li><a href="#">My account</a></li>
-                            <li><a href="#">Subscribe</a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul> -->
+                                <li><a href="#">Login</a></li>
+                                <li><a href="#">My account</a></li>
+                                <li><a href="#">Subscribe</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul> -->
                     </div>
                 </div>
                 <div class="col-lg-3">
@@ -302,28 +232,28 @@
                             <p>support.kgfgym@gmail.com</p>
                         </div>
                         <!-- <div class="fw-recent">
-                            <h6><a href="#">Physical fitness may help prevent depression, anxiety</a></h6>
-                            <ul>
-                                <li>3 min read</li>
-                                <li>20 Comment</li>
-                            </ul>
-                        </div>
-                        <div class="fw-recent">
-                            <h6><a href="#">Fitness: The best exercise to lose belly fat and tone up...</a></h6>
-                            <ul>
-                                <li>3 min read</li>
-                                <li>20 Comment</li>
-                            </ul>
-                        </div> -->
+                                <h6><a href="#">Physical fitness may help prevent depression, anxiety</a></h6>
+                                <ul>
+                                    <li>3 min read</li>
+                                    <li>20 Comment</li>
+                                </ul>
+                            </div>
+                            <div class="fw-recent">
+                                <h6><a href="#">Fitness: The best exercise to lose belly fat and tone up...</a></h6>
+                                <ul>
+                                    <li>3 min read</li>
+                                    <li>20 Comment</li>
+                                </ul>
+                            </div> -->
                     </div>
                 </div>
             </div>
             <div class="copyright-text">
                 <!-- <ul>
-                    <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul> -->
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul> -->
                 <p>
                     Copyright &copy;
                     <script>
@@ -339,9 +269,8 @@
     <!-- Js Plugins -->
     <script src="/js/jquery-3.3.1.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/jquery.magnific-popup.min.js"></script>
-    <script src="/js/masonry.pkgd.min.js"></script>
-    <script src="/js/jquery.barfiller.js"></script>
+    <script src="/js/jquery.nice-select.min.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
     <script src="/js/jquery.slicknav.js"></script>
     <script src="/js/owl.carousel.min.js"></script>
     <script src="/js/main.js"></script>
