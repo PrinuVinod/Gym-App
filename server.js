@@ -155,7 +155,7 @@ app.get('/editpass', isAuthenticated1, async (req, res) => {
 });
 
 app.post('/updatepass', isAuthenticated1, async (req, res) => {
-  const memberId = req.session.memberss._id; // Get member ID from session
+  const memberId = req.session.memberss._id;
   const {
     oldPassword,
     newPassword
@@ -334,7 +334,7 @@ app.get('/editowner/:id', isAuthenticated, async (req, res) => {
   }
 });
 
-app.post('/updateowner/:id', async (req, res) => {
+app.post('/updateowner/:id', isAuthenticated, async (req, res) => {
   const userId = req.params.id;
   const updatedData = req.body;
 
@@ -344,6 +344,40 @@ app.post('/updateowner/:id', async (req, res) => {
   } catch (error) {
     console.error('Error updating member:', error);
     res.status(500).send('Server Error');
+  }
+});
+
+app.get('/editownerpass', isAuthenticated, async (req, res) => {
+  res.render('editownerpasss', {
+    title: 'Edit Password'
+  });
+});
+
+app.post('/updateownerpass', isAuthenticated, async (req, res) => {
+  const userId = req.session.user._id;
+  const {
+    oldPassword,
+    newPassword
+  } = req.body;
+
+  try {
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).send('Member not found');
+    }
+
+    if (user.password !== oldPassword) {
+      return res.status(401).send('Old password is incorrect');
+    }
+
+    user.password = newPassword;
+    await user.save();
+
+    res.redirect('/ownerprofile');
+  } catch (err) {
+    console.error('Error updating password:', err);
+    res.status(500).send('Internal Server Error');
   }
 });
 
