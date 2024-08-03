@@ -59,6 +59,7 @@ app.get('/', async (req, res) => {
 app.get('/members', isAuthenticated, async (req, res) => {
   try {
     const searchQuery = req.query.search || '';
+    console.log('Search Query:', searchQuery); // Debugging line
     let members;
 
     if (searchQuery) {
@@ -71,6 +72,7 @@ app.get('/members', isAuthenticated, async (req, res) => {
           }
         ]
       });
+      console.log('Members Found:', members); // Debugging line
     } else {
       members = await Member.find();
     }
@@ -84,6 +86,7 @@ app.get('/members', isAuthenticated, async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
+
 
 app.get('/addmember', isAuthenticated, (req, res) => {
   res.render('addmember');
