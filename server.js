@@ -103,7 +103,6 @@ app.get('/editmember/:id', isAuthenticated, async (req, res) => {
   }
 });
 
-// Update Route
 app.post('/updatemember/:id', async (req, res) => {
   const memberId = req.params.id;
   const updatedData = req.body;
@@ -117,7 +116,6 @@ app.post('/updatemember/:id', async (req, res) => {
   }
 });
 
-// Delete Route
 app.post('/deletemember/:id', async (req, res) => {
   const memberId = req.params.id;
 
@@ -127,6 +125,40 @@ app.post('/deletemember/:id', async (req, res) => {
   } catch (error) {
     console.error('Error deleting member:', error);
     res.status(500).send('Server Error');
+  }
+});
+
+app.get('/editpass', isAuthenticated1, async (req, res) => {
+  res.render('editpass', {
+    title: 'Edit Password'
+  });
+});
+
+app.post('/updatepass', isAuthenticated1, async (req, res) => {
+  const memberId = req.session.memberss._id; // Get member ID from session
+  const {
+    oldPassword,
+    newPassword
+  } = req.body;
+
+  try {
+    const member = await Member.findById(memberId);
+
+    if (!member) {
+      return res.status(404).send('Member not found');
+    }
+
+    if (member.password !== oldPassword) {
+      return res.status(401).send('Old password is incorrect');
+    }
+
+    member.password = newPassword;
+    await member.save();
+
+    res.redirect('/profile');
+  } catch (err) {
+    console.error('Error updating password:', err);
+    res.status(500).send('Internal Server Error');
   }
 });
 

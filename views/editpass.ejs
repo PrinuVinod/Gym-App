@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="K.G.F">
     <meta name="keywords" content="K.G.F, Gym">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>K.G.F | Member Profile</title>
+    <title>K.G.F | Members Password Edit</title>
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/bootstrap.min.css" type="text/css">
@@ -34,21 +35,45 @@
             font-size: 16px;
             margin: 4px 2px;
             cursor: pointer;
+            border-radius: 10px;
         }
 
         .subbut:hover {
             background-color: white;
             color: #f36100;
         }
+
+        .abut {
+            color: white;
+        }
+
+        .abut:hover {
+            background-color: white;
+            color: #f36100;
+        }
+
+        .delbut {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .delbut:hover {
+            background-color: white;
+            color: red;
+            text-decoration: solid;
+        }
     </style>
 </head>
 
 <body>
-    <!-- Page Preloader -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
-
     <!-- Offcanvas Menu Section Begin -->
     <div class="offcanvas-menu-overlay"></div>
     <div class="offcanvas-menu-wrapper">
@@ -61,8 +86,7 @@
         <nav class="canvas-menu mobile-menu">
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/">About Us</a></li>
-                <li><a href="/logout">Logout</a></li>
+                <li class="active"><a href="/selectuser">Logout?</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -88,8 +112,7 @@
                     <nav class="nav-menu">
                         <ul>
                             <li><a href="/">Home</a></li>
-                            <li><a href="/">Contact</a></li>
-                            <li class="active"><a href="/logout">Logout</a></li>
+                            <li class="active"><a href="/selectuser">Logout</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -115,48 +138,38 @@
     </header>
     <!-- Header End -->
 
-    <!-- ChoseUs Section Begin -->
+    <!-- Profile Section Begin -->
     <section class="profile-section spad" style="margin-top: 50px; text-align: center;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <span>User Profile</span>
-                        <h2>Welcome to Your Profile</h2>
+                        <span>Remember Your Password</span>
+                        <h2>Update Your Password</h2>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="profile-info">
-                        <h1 style="color: #f36100;">
-                            <%= member.name %>
-                        </h1>
-                        <p><strong style="color: white;">Phone Number :</strong>
-                            <%= member.phone %>
-                        </p>
-                        <p><strong style="color: white;">Age :</strong>
-                            <%= member.age %>
-                        </p>
-                        <p><strong style="color: white;">Membership Started On :</strong>
-                            <script>
-                                var lastPayment = new Date('<%= member.lastpayment %>');
-                                document.write(lastPayment.toDateString());
-                            </script>
-                        </p>
-                        <p><strong style="color: white;">Membership Ends On :</strong>
-                            <script>
-                                var dueDate = new Date('<%= member.due %>');
-                                document.write(dueDate.toDateString());
-                            </script>
-                        </p>
-                        <button class="subbut" style="border-radius: 10px;" onclick="window.location.href='/editpass'">Update Password?</button>
+                    <div class="form-container">
+                        <form action="/updatepass" method="POST">
+                            <div class="form-group">
+                                <label for="oldPassword" style="color: white;">Old Password : </label>
+                                <input type="password" id="oldPassword" name="oldPassword" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="newPassword" style="color: white;">New Password : </label>
+                                <input type="password" id="newPassword" name="newPassword" required>
+                            </div>
+                            <button class="subbut" onclick="window.location.href='/members'">Back</button>
+                            <button type="submit" class="subbut">Update Password</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- ChoseUs Section End -->
+    <!-- Profile Section End -->
 
     <!-- Footer Section Begin -->
     <footer class="footer-section" id="contact">
@@ -168,13 +181,13 @@
                             <a href="#"><img src="/img/logo.png" alt=""></a>
                         </div>
                         <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore
-                            dolore magna aliqua endisse ultrices gravida lorem.</p> -->
+                                labore
+                                dolore magna aliqua endisse ultrices gravida lorem.</p> -->
                         <div class="fa-social">
                             <!-- <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-youtube-play"></i></a>
-                            <a href="https://www.instagram.com/kgf.the_oasis_patharam/"><i class="fa fa-instagram"></i></a>-->
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-youtube-play"></i></a>
+                                <a href="https://www.instagram.com/kgf.the_oasis_patharam/"><i class="fa fa-instagram"></i></a>-->
                         </div>
                     </div>
                 </div>
@@ -189,11 +202,11 @@
                             </div>
                         </a>
                         <!-- <ul>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Classes</a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul> -->
+                                <li><a href="#">About</a></li>
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">Classes</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul> -->
                     </div>
                 </div>
                 <div class="col-lg-3">
@@ -207,11 +220,11 @@
                             </ul>
                         </div>
                         <!-- <ul>
-                            <li><a href="#">Login</a></li>
-                            <li><a href="#">My account</a></li>
-                            <li><a href="#">Subscribe</a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul> -->
+                                <li><a href="#">Login</a></li>
+                                <li><a href="#">My account</a></li>
+                                <li><a href="#">Subscribe</a></li>
+                                <li><a href="#">Contact</a></li>
+                            </ul> -->
                     </div>
                 </div>
                 <div class="col-lg-3">
@@ -222,28 +235,28 @@
                             <p>support.kgfgym@gmail.com</p>
                         </div>
                         <!-- <div class="fw-recent">
-                            <h6><a href="#">Physical fitness may help prevent depression, anxiety</a></h6>
-                            <ul>
-                                <li>3 min read</li>
-                                <li>20 Comment</li>
-                            </ul>
-                        </div>
-                        <div class="fw-recent">
-                            <h6><a href="#">Fitness: The best exercise to lose belly fat and tone up...</a></h6>
-                            <ul>
-                                <li>3 min read</li>
-                                <li>20 Comment</li>
-                            </ul>
-                        </div> -->
+                                <h6><a href="#">Physical fitness may help prevent depression, anxiety</a></h6>
+                                <ul>
+                                    <li>3 min read</li>
+                                    <li>20 Comment</li>
+                                </ul>
+                            </div>
+                            <div class="fw-recent">
+                                <h6><a href="#">Fitness: The best exercise to lose belly fat and tone up...</a></h6>
+                                <ul>
+                                    <li>3 min read</li>
+                                    <li>20 Comment</li>
+                                </ul>
+                            </div> -->
                     </div>
                 </div>
             </div>
             <div class="copyright-text">
                 <!-- <ul>
-                    <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul> -->
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul> -->
                 <p>
                     Copyright &copy;
                     <script>
@@ -259,11 +272,11 @@
     <!-- Js Plugins -->
     <script src="/js/jquery-3.3.1.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/jquery.magnific-popup.min.js"></script>
-    <script src="/js/masonry.pkgd.min.js"></script>
-    <script src="/js/jquery.barfiller.js"></script>
+    <script src="/js/jquery.nice-select.min.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
     <script src="/js/jquery.slicknav.js"></script>
     <script src="/js/owl.carousel.min.js"></script>
     <script src="/js/main.js"></script>
 </body>
+
 </html>
