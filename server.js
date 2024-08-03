@@ -5,6 +5,7 @@ const path = require('path');
 const session = require('express-session');
 const User = require('./models/user');
 const Member = require('./models/member');
+const Members = require('./models/members');
 const app = express();
 require('dotenv').config();
 
@@ -97,23 +98,21 @@ app.post('/addmember', isAuthenticated, async (req, res) => {
     const {
       name,
       phone,
-      lastpayment,
-      age
+      lastpayment
     } = req.body;
 
     const lastPaymentDate = new Date(lastpayment);
     const nextFeeDueDate = new Date(lastPaymentDate.setMonth(lastPaymentDate.getMonth() + 1));
 
-    const newMember = new Member({
+    const newMember = new Members({
       name,
       phone,
       lastpayment: new Date(lastpayment),
       due: nextFeeDueDate,
-      age
     });
 
     await newMember.save();
-    res.redirect('/');
+    res.redirect('/members');
   } catch (err) {
     console.error(err);
     res.status(500).send('Internal Server Error');

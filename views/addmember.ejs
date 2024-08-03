@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="K.G.F">
     <meta name="keywords" content="K.G.F, Gym">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>K.G.F | Members List</title>
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/bootstrap.min.css" type="text/css">
@@ -16,13 +16,107 @@
     <link rel="stylesheet" href="/styles/barfiller.css" type="text/css">
     <link rel="stylesheet" href="/styles/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="/styles/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="/styles/styles.css" type="text/css">
     <link rel="icon" type="image/png" href="/img/logo.png">
-    <title>Add New Member | K.G.F</title>
-    <link rel="stylesheet" href="/styles/styles.css">
-    <link rel="stylesheet" href="/styles/style1.css">
+    <style>
+        body {
+            background-color: black;
+        }
+
+        .profile-section {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .section-title span {
+            display: block;
+            font-size: 20px;
+            color: #f36100;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .profile-info .search-form {
+            margin-bottom: 30px;
+        }
+
+        .profile-info .search-form input[type="text"] {
+            width: 60%;
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ffffff;
+            border-radius: 5px;
+            background-color: #2c2c2c;
+            color: #ffffff;
+        }
+
+        .profile-info .search-form button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f36100;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        .profile-info .table-wrapper {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        .profile-info table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .profile-info th,
+        .profile-info td {
+            padding: 15px;
+            border: 1px solid #ffffff;
+            color: #ffffff;
+        }
+
+        .profile-info th {
+            background-color: #3a3a3a;
+        }
+
+        .profile-info td {
+            background-color: #2c2c2c;
+        }
+
+        .profile-info .btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f36100;
+            color: #ffffff;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .profile-info .btn:hover {
+            background-color: white;
+            color: #f36100;
+        }
+
+        .canvas-social a {
+            color: #ffffff;
+            margin-right: 10px;
+        }
+    </style>
 </head>
 
 <body>
+    <!-- Page Preloader -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
     <!-- Offcanvas Menu Section Begin -->
     <div class="offcanvas-menu-overlay"></div>
     <div class="offcanvas-menu-wrapper">
@@ -35,36 +129,17 @@
         <nav class="canvas-menu mobile-menu">
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/">About Us</a></li>
-                <!-- <li><a href="/classes">Classes</a></li> -->
-                <!-- <li><a href="/services">Services</a></li> -->
-                <li><a href="/">Trainer</a></li>
-                <li><a href="/">Gallery</a></li>
-                <!-- <li><a href="#">Pages</a>
-                            <ul class="dropdown">
-                                <li><a href="/about-us">About us</a></li>
-                                <li><a href="/class-timetable">Classes timetable</a></li>
-                                <li><a href="/bmi-calculator">Bmi calculate</a></li>
-                                <li><a href="/team">Our team</a></li>
-                                <li><a href="/gallery">Gallery</a></li>
-                                <li><a href="/blog">Our blog</a></li>
-                                <li><a href="/404">404</a></li>
-                            </ul>
-                        </li> -->
-                <li><a href="/">Contact</a></li>
+                <li class="active"><a href="/logout">Logout</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
         <div class="canvas-social">
-            <!-- <a href="#"><i class="fa fa-facebook"></i></a>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
-                    <a href="#"><i class="fa fa-youtube-play"></i></a> -->
             <a href="https://www.instagram.com/kgf.the_oasis_patharam/"><i class="fa fa-instagram"></i></a>
-            <a href="/members"><i class="fa fa-user"></i></a>
+            <a href="/selectuser"><i class="fa fa-user"></i></a>
         </div>
     </div>
     <!-- Offcanvas Menu Section End -->
-    
+
     <!-- Header Section Begin -->
     <header class="header-section">
         <div class="container-fluid">
@@ -72,31 +147,15 @@
                 <div class="col-lg-3">
                     <div class="logo">
                         <a href="/">
-                            <img style="width: 150px;" src="/img/logo.png" alt="">
+                            <img style="width: 100px;" src="/img/logo.png" alt="">
                         </a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <nav class="nav-menu">
                         <ul>
-                            <li class="active"><a href="/">Home</a></li>
-                            <li><a href="/">About Us</a></li>
-                            <!-- <li><a href="/class-details">Classes</a></li>
-                                    <li><a href="/services">Services</a></li> -->
-                            <li><a href="/">Trainer</a></li>
-                            <li><a href="/">Gallery</a></li>
-                            <!-- <li><a href="#">Pages</a>
-                                        <ul class="dropdown">
-                                            <li><a href="/about-us">About us</a></li>
-                                            <li><a href="/class-timetable">Classes timetable</a></li>
-                                            <li><a href="/bmi-calculator">Bmi calculate</a></li>
-                                            <li><a href="/team">Our team</a></li>
-                                            <li><a href="/gallery">Gallery</a></li>
-                                            <li><a href="/blog">Our blog</a></li>
-                                            <li><a href="/404">404</a></li>
-                                        </ul>
-                                    </li> -->
-                            <li><a href="/">Contact</a></li>
+                            <li><a href="/">Home</a></li>
+                            <li class="active"><a href="/logout">Logout</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -108,11 +167,9 @@
                                     class="fa fa-search"></i></a>
                         </div>
                         <div class="to-social">
-                            <!-- <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-youtube-play"></i></a> -->
-                            <a href="https://www.instagram.com/kgf.the_oasis_patharam/"><i class="fa fa-instagram"></i></a>
-                            <a href="/members"><i class="fa fa-user"></i></a>
+                            <a href="https://www.instagram.com/kgf.the_oasis_patharam/"><i
+                                    class="fa fa-instagram"></i></a>
+                            <a href="/selectuser"><i class="fa fa-user"></i></a>
                         </div>
                     </div>
                 </div>
@@ -124,135 +181,107 @@
     </header>
     <!-- Header End -->
 
-    <section class="hero">
-        <h1>Add New Member</h1>
+    <!-- ChoseUs Section Begin -->
+    <section class="profile-section spad" style="margin-top: 50px; text-align: center;">
         <div class="container">
-            <form action="/addmember" method="post">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="phone">Phone:</label>
-                <input type="text" id="phone" name="phone" required>
-
-                <label for="lastpayment">Last Payment Date:</label>
-                <input type="date" id="lastpayment" name="lastpayment" required>
-
-                <label for="age">Age:</label>
-                <input type="number" id="age" name="age" required>
-
-                <button type="submit" class="btn">Add Member</button>
-            </form>
-            <a href="/members" class="btn btn-back">Back to Members List</a>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <span>Add Members</span>
+                        <!-- <h2>Welcome to Your Profile</h2> -->
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="profile-info">
+                        <form action="/addmember" method="post">
+                            <label for="name" style="color: white;">Name:</label><br>
+                            <input type="text" id="name" name="name" required><br><br>
+                        
+                            <label for="phone" style="color: white;">Phone:</label><br>
+                            <input type="text" id="phone" name="phone" required><br><br>
+                        
+                            <label for="lastpayment" style="color: white;">Last Payment Date:</label><br>
+                            <input type="date" id="lastpayment" name="lastpayment" required><br><br>
+                        
+                            <button type="submit" class="btn">Add Member</button><br>
+                        </form>
+                        <a href="/members" class="btn btn-back">Back to Members List</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
+    <!-- ChoseUs Section End -->
 
-<!-- Footer Section Begin -->
-<footer class="footer-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-2">
-                <div class="fs-about">
-                    <div class="fa-logo">
-                        <a href="#"><img src="/img/logo.png" alt=""></a>
-                    </div>
-                    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore
-                            dolore magna aliqua endisse ultrices gravida lorem.</p> -->
-                    <div class="fa-social">
-                        <!-- <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-youtube-play"></i></a>
-                            <a href="https://www.instagram.com/kgf.the_oasis_patharam/"><i class="fa fa-instagram"></i></a>-->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer-section" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="fs-about">
+                        <div class="fa-logo">
+                            <a href="#"><img src="/img/logo.png" alt=""></a>
+                        </div>
+                        <div class="fa-social">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 offset-lg-1">
-                <div class="fs-widget">
-                    <a
-                        href="https://www.google.com/maps/place/KGF+MULTI+GYM/@9.0741904,76.6046912,17z/data=!3m1!4b1!4m6!3m5!1s0x3b06050c78c8af15:0x83ac2a156edbcc07!8m2!3d9.0741904!4d76.6062964!16s%2Fg%2F11v4_1_3vm?entry=ttu">
+                <div class="col-lg-3 offset-lg-1">
+                    <div class="fs-widget">
+                        <a
+                            href="https://www.google.com/maps/place/KGF+MULTI+GYM/@9.0741904,76.6046912,17z/data=!3m1!4b1!4m6!3m5!1s0x3b06050c78c8af15:0x83ac2a156edbcc07!8m2!3d9.0741904!4d76.6062964!16s%2Fg%2F11v4_1_3vm?entry=ttu">
+                            <div class="gt-text">
+                                <h4>Location</h4>
+                                <i class="fa fa-map-marker"></i>
+                                <p>3JF4+PF7, Patharam-Kumaranchira Rd, Sooranad South, Sooranad, Kerala 690522</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="fs-widget">
+                        <h4>Phone</h4>
                         <div class="gt-text">
-                            <h4>Location</h4>
-                            <i class="fa fa-map-marker"></i>
-                            <p>3JF4+PF7, Patharam-Kumaranchira Rd, Sooranad South, Sooranad, Kerala 690522</p>
-                        </div>
-                    </a>
-                    <!-- <ul>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Classes</a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul> -->
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="fs-widget">
-                    <h4>Phone</h4>
-                    <div class="gt-text">
-                        <i class="fa fa-mobile"></i>
-                        <ul>
-                            <li>+91 97442 15559</li>
-                            <!-- <li>125-668-886</li> -->
-                        </ul>
-                    </div>
-                    <!-- <ul>
-                            <li><a href="#">Login</a></li>
-                            <li><a href="#">My account</a></li>
-                            <li><a href="#">Subscribe</a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul> -->
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="fs-widget">
-                    <h4>Mail</h4>
-                    <div class="gt-text email">
-                        <i class="fa fa-envelope"></i>
-                        <p>support.kgfgym@gmail.com</p>
-                    </div>
-                    <!-- <div class="fw-recent">
-                            <h6><a href="#">Physical fitness may help prevent depression, anxiety</a></h6>
+                            <i class="fa fa-mobile"></i>
                             <ul>
-                                <li>3 min read</li>
-                                <li>20 Comment</li>
+                                <li>+91 97442 15559</li>
                             </ul>
                         </div>
-                        <div class="fw-recent">
-                            <h6><a href="#">Fitness: The best exercise to lose belly fat and tone up...</a></h6>
-                            <ul>
-                                <li>3 min read</li>
-                                <li>20 Comment</li>
-                            </ul>
-                        </div> -->
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="fs-widget">
+                        <h4>Mail</h4>
+                        <div class="gt-text email">
+                            <i class="fa fa-envelope"></i>
+                            <p>support.kgfgym@gmail.com</p>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="copyright-text">
+                <p>
+                    Copyright &copy;
+                    <script>
+                        document.write(new Date().getFullYear());
+                    </script> All rights reserved | KGF Multi Gym
+                    </p>
+            </div>
         </div>
-        <div class="copyright-text">
-            <!-- <ul>
-                    <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul> -->
-            <p>
-                Copyright &copy;
-                <script>
-                    document.write(new Date().getFullYear());
-                </script> All rights reserved | KGF Multi Gym
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </p>
-        </div>
-    </div>
-</footer>
-<!-- Footer Section End -->
+    </footer>
+    <!-- Footer Section End -->
 
-<!-- Js Plugins -->
-<script src="/js/jquery-3.3.1.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<script src="/js/jquery.magnific-popup.min.js"></script>
-<script src="/js/masonry.pkgd.min.js"></script>
-<script src="/js/jquery.barfiller.js"></script>
-<script src="/js/jquery.slicknav.js"></script>
-<script src="/js/owl.carousel.min.js"></script>
-<script src="/js/main.js"></script>
+    <!-- Js Plugins -->
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.magnific-popup.min.js"></script>
+    <script src="/js/masonry.pkgd.min.js"></script>
+    <script src="/js/jquery.barfiller.js"></script>
+    <script src="/js/jquery.slicknav.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/main.js"></script>
 </body>
-
 </html>
