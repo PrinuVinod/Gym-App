@@ -60,7 +60,7 @@ app.get('/', async (req, res) => {
 app.get('/members', isAuthenticated, async (req, res) => {
   try {
     const searchQuery = req.query.search || '';
-    console.log('Search Query:', searchQuery); // Debugging line
+    console.log('Search Query:', searchQuery);
     let members;
 
     if (searchQuery) {
@@ -73,7 +73,7 @@ app.get('/members', isAuthenticated, async (req, res) => {
           }
         ]
       });
-      console.log('Members Found:', members); // Debugging line
+      console.log('Members Found:', members);
     } else {
       members = await Member.find();
     }
@@ -114,6 +114,26 @@ app.post('/updatemember/:id', async (req, res) => {
     console.error('Error updating member:', error);
     res.status(500).send('Server Error');
   }
+});
+
+app.post('/updatestatus/:id', async (req, res) => {
+  const memberId = req.params.id;
+  const member = await Member.findById(memberId);
+  const newStatus = !member.status;
+  await Member.findByIdAndUpdate(memberId, {
+    status: newStatus
+  });
+  res.redirect('/members');
+});
+
+app.post('/updateactivity/:id', async (req, res) => {
+  const memberId = req.params.id;
+  const member = await Member.findById(memberId);
+  const newActivity = !member.activity;
+  await Member.findByIdAndUpdate(memberId, {
+    activity: newActivity
+  });
+  res.redirect('/members');
 });
 
 app.post('/deletemember/:id', async (req, res) => {

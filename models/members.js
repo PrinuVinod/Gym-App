@@ -13,6 +13,8 @@ const memberSchema = new mongoose.Schema({
     lastpayment: Date,
     due: Date,
     age: Number,
+    activity: Boolean,
+    status: Boolean,
 });
 
 module.exports = mongoose.model('Members', memberSchema);
