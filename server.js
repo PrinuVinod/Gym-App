@@ -10,7 +10,6 @@ require('dotenv').config();
 
 app.use(express.static('public'));
 
-// Session configuration
 app.use(session({
   secret: process.env.SESSION_SECRET || 'your_secret_key',
   resave: false,
@@ -19,10 +18,7 @@ app.use(session({
 
 const port = process.env.PORT || 3000;
 
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(process.env.MONGODB_URI);
 
 app.use(bodyParser.urlencoded({
   extended: true
@@ -30,7 +26,6 @@ app.use(bodyParser.urlencoded({
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Middleware to check if user is authenticated
 const isAuthenticated = (req, res, next) => {
   if (req.session.user) {
     return next();
@@ -39,11 +34,15 @@ const isAuthenticated = (req, res, next) => {
 };
 
 const isAuthenticated1 = (req, res, next) => {
-  if (req.session.user) {
+  if (req.session.memberss) {
     return next();
   }
-  res.redirect('/login');
+  res.redirect('/memberlogin');
 };
+
+app.get('/selectuser', (req, res) => {
+  res.render('select');
+});
 
 app.get('/', async (req, res) => {
   try {
@@ -139,9 +138,60 @@ app.post('/ownerlogin', async (req, res) => {
     }
 
     if (user.password === password) {
-      // Successful login
-      req.session.user = user; // Store user in session
+      req.session.user = user;
       res.redirect('/members');
+    } else {
+      console.log('Password does not match');
+      res.status(401).send('Invalid phone number or password');
+    }
+  } catch (err) {
+    console.error('Error:', err);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+app.get('/profile', isAuthenticated1, async (req, res) => {
+  try {
+    const member = req.session.memberss;
+    const searchQuery = req.query.search || '';
+
+    if (!member) {
+      return res.redirect('/memberlogin');
+    }
+
+    res.render('profile', {
+      member,
+      searchQuery
+    });
+  } catch (err) {
+    console.error('Error:', err);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+app.get('/memberlogin', (req, res) => {
+  res.render('memberslogin');
+});
+
+app.post('/memberlogin', async (req, res) => {
+  const {
+    phone,
+    password
+  } = req.body;
+  try {
+    console.log(`Login attempt for phone: ${phone}`);
+    const member = await Member.findOne({
+      phone
+    });
+
+    if (!member) {
+      console.log('Member not found');
+      return res.status(401).send('Invalid phone number or password');
+    }
+
+    if (member.password === password) {
+      req.session.memberss = member;
+      res.redirect('/profile');
     } else {
       console.log('Password does not match');
       res.status(401).send('Invalid phone number or password');
@@ -158,7 +208,7 @@ app.get('/logout', (req, res) => {
       console.error('Error destroying session:', err);
       res.status(500).send('Internal Server Error');
     } else {
-      res.redirect('/login');
+      res.redirect('/selectuser');
     }
   });
 });

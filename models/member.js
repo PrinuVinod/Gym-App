@@ -2,12 +2,18 @@ const mongoose = require('mongoose');
 
 const memberSchema = new mongoose.Schema({
     name: String,
-    phone: String,
+    phone: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
     lastpayment: Date,
     due: Date,
-    age: Number,
+    age: Number
 });
 
-const Member = mongoose.model('Member', memberSchema);
-
-module.exports = Member;
+module.exports = mongoose.model('Member', memberSchema);

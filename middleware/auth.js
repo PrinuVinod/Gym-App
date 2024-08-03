@@ -1,4 +1,3 @@
-// middleware/auth.js
 const basicAuth = (req, res, next) => {
     const auth = req.headers['authorization'];
 

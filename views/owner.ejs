@@ -1,28 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
+  <meta name="description" content="K.G.F">
+  <meta name="keywords" content="K.G.F, Gym">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
-  <link rel="stylesheet" href="styles/login.css">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>K.G.F | Owner Login</title>
+  <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/bootstrap.min.css" type="text/css">
+  <link rel="stylesheet" href="/styles/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="/styles/flaticon.css" type="text/css">
+  <link rel="stylesheet" href="/styles/owl.carousel.min.css" type="text/css">
+  <link rel="stylesheet" href="/styles/barfiller.css" type="text/css">
+  <link rel="stylesheet" href="/styles/magnific-popup.css" type="text/css">
+  <link rel="stylesheet" href="/styles/slicknav.min.css" type="text/css">
+  <link rel="stylesheet" href="/styles/styles.css" type="text/css">
   <link rel="icon" type="image/png" href="/img/logo.png">
+  <style>
+    body {
+      background-color: black;
+    }
+
+    .subbut {
+      background-color: #f36100;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+
+    .subbut:hover {
+      background-color: white;
+      color: #f36100;
+    }
+  </style>
 </head>
 
 <body>
-  <div class="container">
-    <h1>Login</h1>
-    <form action="/ownerlogin" method="POST">
-      <label for="phone">Username</label>
-      <input type="text" id="phone" name="phone" required>
-
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" required>
-
-      <button type="submit">Login</button>
-    </form>
-    <a href="/" class="btn-back">Back to Home</a>
+  <!-- Page Preloader -->
+  <div id="preloder">
+    <div class="loader"></div>
   </div>
-</body>
 
+  <!-- Offcanvas Menu Section Begin -->
+  <div class="offcanvas-menu-overlay"></div>
+  <div class="offcanvas-menu-wrapper">
+    <div class="canvas-close">
+      <i class="fa fa-close"></i>
+    </div>
+    <div class="canvas-search search-switch">
+      <i class="fa fa-search"></i>
+    </div>
+    <nav class="canvas-menu mobile-menu">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li class="active"><a href="/selectuser">Login?</a></li>
+      </ul>
+    </nav>
+    <div id="mobile-menu-wrap"></div>
+    <div class="canvas-social">
+      <a href="https://www.instagram.com/kgf.the_oasis_patharam/"><i class="fa fa-instagram"></i></a>
+      <a href="/selectuser"><i class="fa fa-user"></i></a>
+    </div>
+  </div>
+  <!-- Offcanvas Menu Section End -->
+
+  <!-- Header Section Begin -->
+  <header class="header-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="logo">
+            <a href="/">
+              <img style="width: 100px;" src="/img/logo.png" alt="">
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <nav class="nav-menu">
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li class="active"><a href="/selectuser">Login?</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="col-lg-3">
+          <div class="top-option">
+            <div class="to-search search-switch">
+              <a
+                href="https://www.google.com/maps/place/KGF+MULTI+GYM/@9.0741904,76.6037215,17z/data=!3m1!4b1!4m6!3m5!1s0x3b06050c78c8af15:0x83ac2a156edbcc07!8m2!3d9.0741904!4d76.6062964!16s%2Fg%2F11v4_1_3vm?entry=ttu"><i
+                  class="fa fa-search"></i></a>
+            </div>
+            <div class="to-social">
+              <a href="https://www.instagram.com/kgf.the_oasis_patharam/"><i class="fa fa-instagram"></i></a>
+              <a href="/selectuser"><i class="fa fa-user"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="canvas-open">
+        <i class="fa fa-bars"></i>
+      </div>
+    </div>
+  </header>
+  <!-- Header End -->
+
+  <!-- Profile Section Begin -->
+  <section class="profile-section spad" style="margin-top: 50px; text-align: center;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="section-title">
+            <span>Owner Login</span>
+            <h2>Login to View Members</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="profile-info">
+            <form action="/ownerlogin" method="POST">
+              <label for="phone" style="color: white;">Phone Number:</label><br>
+              <input type="text" id="phone" name="phone" required><br><br><br>
+            
+              <label for="password" style="color: white;">Password</label><br>
+              <input type="password" id="password" name="password" required><br><br><br>
+            
+              <button type="submit" class="subbut">Login</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Profile Section End -->
+
+  <!-- Footer Section Begin -->
+  <footer class="footer-section" id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2">
+          <div class="fs-about">
+            <div class="fa-logo">
+              <a href="#"><img src="/img/logo.png" alt=""></a>
+            </div>
+            <div class="fa-social">
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 offset-lg-1">
+          <div class="fs-widget">
+            <a
+              href="https://www.google.com/maps/place/KGF+MULTI+GYM/@9.0741904,76.6046912,17z/data=!3m1!4b1!4m6!3m5!1s0x3b06050c78c8af15:0x83ac2a156edbcc07!8m2!3d9.0741904!4d76.6062964!16s%2Fg%2F11v4_1_3vm?entry=ttu">
+              <div class="gt-text">
+                <h4>Location</h4>
+                <i class="fa fa-map-marker"></i>
+                <p>3JF4+PF7, Patharam-Kumaranchira Rd, Sooranad South, Sooranad, Kerala 690522</p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="fs-widget">
+            <h4>Phone</h4>
+            <div class="gt-text">
+              <i class="fa fa-mobile"></i>
+              <ul>
+                <li>+91 97442 15559</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="fs-widget">
+            <h4>Mail</h4>
+            <div class="gt-text email">
+              <i class="fa fa-envelope"></i>
+              <p>support.kgfgym@gmail.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copyright-text">
+        <p>
+          Copyright &copy;
+          <script>
+            document.write(new Date().getFullYear());
+          </script> All rights reserved | KGF Multi Gym
+        </p>
+      </div>
+    </div>
+  </footer>
+  <!-- Footer Section End -->
+
+  <!-- Js Plugins -->
+  <script src="/js/jquery-3.3.1.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/jquery.magnific-popup.min.js"></script>
+  <script src="/js/masonry.pkgd.min.js"></script>
+  <script src="/js/jquery.barfiller.js"></script>
+  <script src="/js/jquery.slicknav.js"></script>
+  <script src="/js/owl.carousel.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
 </html>
