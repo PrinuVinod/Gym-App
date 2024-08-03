@@ -111,22 +111,22 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="profile-info">
-                        <h1 style="color: white;">
+                        <h1 style="color: #f36100;">
                             <%= member.name %>
                         </h1>
-                        <p><strong>Phone Number :</strong>
+                        <p><strong style="color: white;">Phone Number :</strong>
                             <%= member.phone %>
                         </p>
-                        <p><strong>Age :</strong>
+                        <p><strong style="color: white;">Age :</strong>
                             <%= member.age %>
                         </p>
-                        <p><strong>Last Paid On :</strong>
+                        <p><strong style="color: white;">Membership Started On :</strong>
                             <script>
                                 var lastPayment = new Date('<%= member.lastpayment %>');
                                 document.write(lastPayment.toDateString());
                             </script>
                         </p>
-                        <p><strong>Due On :</strong>
+                        <p><strong style="color: white;">Membership Ends On :</strong>
                             <script>
                                 var dueDate = new Date('<%= member.due %>');
                                 document.write(dueDate.toDateString());
