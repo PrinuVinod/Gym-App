@@ -6,6 +6,7 @@ const session = require('express-session');
 const User = require('./models/user');
 const Member = require('./models/member');
 const Members = require('./models/members');
+const moment = require('moment');
 const app = express();
 require('dotenv').config();
 
@@ -43,6 +44,10 @@ const isAuthenticated1 = (req, res, next) => {
 
 app.get('/selectuser', (req, res) => {
   res.render('select');
+});
+
+app.get('/error', (req, res) => {
+  res.render('error');
 });
 
 app.get('/', async (req, res) => {
@@ -138,8 +143,6 @@ app.post('/updatemember/:id', async (req, res) => {
   }
 });
 
-const moment = require('moment'); // Add moment.js for date manipulation
-
 app.post('/updatestatus/:id', async (req, res) => {
   const memberId = req.params.id;
 
@@ -172,7 +175,6 @@ app.post('/updatestatus/:id', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
-
 
 app.post('/updateactivity/:id', async (req, res) => {
   const memberId = req.params.id;
@@ -282,7 +284,10 @@ app.post('/ownerlogin', async (req, res) => {
 
     if (!user) {
       console.log('User not found');
-      return res.status(401).send('Invalid phone number or password');
+      return res.render('error', {
+        message: 'Invalid phone number or password',
+        redirectUrl: '/ownerlogin'
+      });
     }
 
     if (user.password === password) {
@@ -290,11 +295,17 @@ app.post('/ownerlogin', async (req, res) => {
       res.redirect('/members');
     } else {
       console.log('Password does not match');
-      res.status(401).send('Invalid phone number or password');
+      return res.render('error', {
+        message: 'Invalid phone number or password',
+        redirectUrl: '/ownerlogin'
+      });
     }
   } catch (err) {
     console.error('Error:', err);
-    res.status(500).send('Internal Server Error');
+    return res.render('error', {
+      message: 'Internal Server Error',
+      redirectUrl: '/ownerlogin'
+    });
   }
 });
 
@@ -328,27 +339,37 @@ app.post('/memberlogin', async (req, res) => {
   } = req.body;
   try {
     console.log(`Login attempt for phone: ${phone}`);
-    const member = await Member.findOne({
+    const memberss = await Member.findOne({
       phone
     });
 
-    if (!member) {
-      console.log('Member not found');
-      return res.status(401).send('Invalid phone number or password');
+    if (!memberss) {
+      console.log('User not found');
+      return res.render('error', {
+        message: 'Invalid phone number or password',
+        redirectUrl: '/memberlogin'
+      });
     }
 
-    if (member.password === password) {
-      req.session.memberss = member;
+    if (memberss.password === password) {
+      req.session.memberss = memberss;
       res.redirect('/profile');
     } else {
       console.log('Password does not match');
-      res.status(401).send('Invalid phone number or password');
+      return res.render('error', {
+        message: 'Invalid phone number or password',
+        redirectUrl: '/memberlogin'
+      });
     }
   } catch (err) {
     console.error('Error:', err);
-    res.status(500).send('Internal Server Error');
+    return res.render('error', {
+      message: 'Internal Server Error',
+      redirectUrl: '/memberlogin'
+    });
   }
 });
+
 
 app.get('/ownerprofile', isAuthenticated, async (req, res) => {
   try {
