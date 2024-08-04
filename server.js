@@ -370,7 +370,6 @@ app.post('/memberlogin', async (req, res) => {
   }
 });
 
-
 app.get('/ownerprofile', isAuthenticated, async (req, res) => {
   try {
     const user = req.session.user;
