@@ -7,9 +7,9 @@ const basicAuth = (req, res, next) => {
         return;
     }
 
-    const [username, password] = new Buffer.from(auth.split(' ')[1], 'base64').toString().split(':');
+    const [name, password] = new Buffer.from(auth.split(' ')[1], 'base64').toString().split(':');
 
-    if (username === process.env.BASIC_AUTH_USER && password === process.env.BASIC_AUTH_PASS) {
+    if (name === process.env.BASIC_AUTH_USER && password === process.env.BASIC_AUTH_PASS) {
         next();
     } else {
         res.set('WWW-Authenticate', 'Basic realm="401"');
